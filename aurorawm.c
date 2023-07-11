@@ -1592,8 +1592,10 @@ void setmfact(const Arg *arg) {
 }
 
 void autostart(void) {
+	system("bash -c 'pgrep -x dunst || dunst &'");
+	system("bash -c 'pgrep -x picom || picom &'");
     system(
-        "cd ~/.config/aurorawm ; [ -f $PWD/autostart.sh ] && ./autostart.sh");
+        "[ -d \"$HOME/.config/aurorawm\" ] && cd ~/.config/aurorawm && [ -f $PWD/autostart.sh ] && ./autostart.sh");
 }
 
 void setup(void) {
